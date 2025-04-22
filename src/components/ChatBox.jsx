@@ -4,7 +4,8 @@ import axios from "axios";
 import MessageBubble from "./MessageBubble";
 
 // Initialize the socket connection
-const socket = io("https://krypto-8pya.onrender.com/");
+const socket = io("https://flaskbackenddogapp-production.up.railway.app");
+
 
 const ChatBox = () => {
   const [messages, setMessages] = useState([]);
@@ -85,7 +86,7 @@ const ChatBox = () => {
 
     try {
       // Send email and session ID to the backend to generate and email the summary
-      const response = await axios.post("https://krypto-8pya.onrender.com/generate_summary", {
+      const response = await axios.post("https://flaskbackenddogapp-production.up.railway.app/generate_summary", {
         session_id: sessionId,
         email: email,
       });
@@ -98,7 +99,7 @@ const ChatBox = () => {
 
   const downloadChat = async () => {
     try {
-      const response = await axios.post("https://krypto-8pya.onrender.com/download_chat", { session_id: sessionId }, { responseType: "blob" });
+      const response = await axios.post("https://flaskbackenddogapp-production.up.railway.app/download_chat", { session_id: sessionId }, { responseType: "blob" });
 
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
